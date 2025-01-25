@@ -32,6 +32,11 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+/lib/ui/l10n/
+*.g.dart
+*.gr.dart
+*.freezed.dart
+
 
 # Symbolication related
 app.*.symbols
