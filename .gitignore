@@ -35,6 +35,7 @@ migrate_working_dir/
 /lib/ui/l10n/
 *.g.dart
 *.gr.dart
+*.config.dart
 *.freezed.dart
 
 

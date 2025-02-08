@@ -7,5 +7,6 @@ part 'main_state.freezed.dart';
 class MainState with _$MainState implements ExceptionState {
   const factory MainState({
     Exception? exception,
+    int? counter,
   }) = _MainState;
 }

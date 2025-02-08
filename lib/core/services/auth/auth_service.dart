@@ -22,7 +22,7 @@ class AuthService with Initializable {
     _googleSignInResolver.init();
 
     _signedInStatusSubject = BehaviorSubject<AuthStatus>.seeded(
-        FirebaseAuth.instance.currentUser != null ? AuthStatus.unsigned : AuthStatus.signed);
+        FirebaseAuth.instance.currentUser != null ? AuthStatus.signed : AuthStatus.unsigned);
     FirebaseAuth.instance.authStateChanges().listen((User? user) => _updateSignInStatus(user));
 
     initialized = true;

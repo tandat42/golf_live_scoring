@@ -1,0 +1,14 @@
+{
+  "commonAppTitle": "Golf Live Scoring Splash",
+  "signInTitle": "Sign in Screen",
+  "signInEmail": "Email",
+  "signInPassword": "Password",
+  "signInButton": "Sign in",
+  "signInGoogleButton": "Sign in with Google",
+  "signInSignUpButton": "Sign up",
+  "signUpTitle": "Sign up Screen",
+  "signUpEmail": "Email",
+  "signUpPassword": "Password",
+  "signUpButton": "Sign up",
+  "mainTitle": "Main Screen"
+}

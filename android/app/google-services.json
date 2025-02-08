@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "410405925296",
+    "project_id": "golf-live-scoring-559c4",
+    "storage_bucket": "golf-live-scoring-559c4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410405925296:android:bf1d14ff19461805bc2675",
+        "android_client_info": {
+          "package_name": "net.alexplay.golf_live_scoring"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410405925296-jll2evalflpmcuaer8l6pt81q1qev52k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.alexplay.golf_live_scoring",
+            "certificate_hash": "7076a69b34f4fe3ea237af456e5a6e67c014167b"
+          }
+        },
+        {
+          "client_id": "410405925296-77tke8c7hr8uvf7p1lk4m740ucjss2if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6GsAZqCmYO6kN7RMhYF10iRQC2FRXnUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410405925296-77tke8c7hr8uvf7p1lk4m740ucjss2if.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "410405925296-t4ks55okvqaut257qp38jep0e8ea86gc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "net.alexplay.golflivescoring.golfLiveScoring"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
