@@ -5,7 +5,7 @@ import 'package:golf_live_scoring/ui/common/data/progress_state.dart';
 part 'sign_up_state.freezed.dart';
 
 @Freezed(toJson: false, fromJson: false)
-class SignUpState with _$SignUpState implements ExceptionState, ProgressState {
+abstract class SignUpState with _$SignUpState implements ExceptionState, ProgressState {
   const factory SignUpState({
     Exception? exception,
     @Default(false) bool inProgress,
