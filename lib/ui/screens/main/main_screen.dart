@@ -4,11 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:golf_live_scoring/core/di.dart';
 import 'package:golf_live_scoring/ui/screens/main/main_cubit.dart';
 import 'package:golf_live_scoring/ui/screens/main/main_state.dart';
-import 'package:golf_live_scoring/ui/utils/l10n_utils.dart';
+import 'package:golf_live_scoring/ui/utils/context_extension.dart';
 
 @RoutePage()
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
+
+  static const path = "/main";
 
   @override
   State<MainScreen> createState() => _MainScreenState();

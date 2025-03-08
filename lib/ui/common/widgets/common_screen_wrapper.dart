@@ -10,7 +10,7 @@ class CommonScreenWrapper<C extends Cubit<S>, S extends ProgressState> extends S
   });
 
   final C cubit;
-  final WidgetBuilder contentBuilder;
+  final BlocWidgetBuilder<S> contentBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,11 @@ class CommonScreenWrapper<C extends Cubit<S>, S extends ProgressState> extends S
           return PopScope(
             canPop: !state.inProgress,
             child: Scaffold(
-              backgroundColor: Colors.green,
               body: Stack(
                 children: [
                   Visibility(
                     visible: !state.inProgress,
-                    child: contentBuilder.call(context),
+                    child: contentBuilder.call(context, state),
                   ),
                   if (state.inProgress) Center(child: CircularProgressIndicator()),
                 ],

@@ -9,7 +9,11 @@ mixin ExceptionDisplayer<T extends StatefulWidget> on State<T> {
   void listenExceptions<V extends ExceptionState>(Stream<V> stream) {
     if (subscriptions.containsKey(stream)) return;
 
-    subscriptions[stream] = stream.map((s) => s.exception).distinct().listen(showExceptionMessage);
+    subscriptions[stream] = stream
+        .map((s) => s.exception)
+        .where((e) => e != null)
+        .distinct()
+        .listen(showExceptionMessage);
   }
 
   void cancelListeningExceptions<V extends ExceptionState>(Stream<V> stream) {
@@ -27,5 +31,6 @@ mixin ExceptionDisplayer<T extends StatefulWidget> on State<T> {
 
   void showExceptionMessage(Exception? exception) {
     //todo
+    print('==== ExceptionDisplayer ====\n    showExceptionMessage: $exception|${runtimeType}');
   }
 }

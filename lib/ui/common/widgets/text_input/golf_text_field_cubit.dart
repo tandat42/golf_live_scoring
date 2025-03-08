@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:golf_live_scoring/ui/common/widgets/text_input/golf_text_input_state.dart';
+import 'package:golf_live_scoring/ui/common/widgets/text_input/golf_text_field_state.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable()
-class GolfTextFieldCubit extends Cubit<GolfTextInputState> {
-  GolfTextFieldCubit({@factoryParam String? initialText}) : super(GolfTextInputState()) {
+class GolfTextFieldCubit extends Cubit<GolfTextFieldState> {
+  GolfTextFieldCubit({@factoryParam String? initialText}) : super(GolfTextFieldState()) {
     controller.text = initialText ?? "";
   }
 

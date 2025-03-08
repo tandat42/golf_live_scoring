@@ -10,6 +10,7 @@ dependencies:
   auto_route: ^10.0.0
   bloc: ^9.0.0
   cloud_firestore: ^5.6.2
+  equatable: ^2.0.7
   firebase_auth: ^5.4.0
   firebase_core: ^3.10.0
   flutter:
@@ -17,6 +18,8 @@ dependencies:
   flutter_bloc: ^9.0.0
   flutter_localizations:
     sdk: flutter
+  flutter_multi_formatter: ^2.13.0
+  flutter_svg: ^2.0.17
   freezed_annotation: ^3.0.0
   get_it: ^8.0.3
   google_sign_in: ^6.2.2
@@ -29,23 +32,48 @@ dependencies:
 dev_dependencies:
   auto_route_generator: ^10.0.1
   build_runner: ^2.4.14
+  flutter_gen_runner: ^5.10.0
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
   freezed: ^3.0.2
   injectable_generator: ^2.7.0
-  json_serializable: ^6.9.3
+  json_serializable: ^6.9.4
 
 flutter:
   uses-material-design: true
   generate: true
 
   assets:
-    - assets/
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: montserrat
+      fonts:
+        - asset: assets/fonts/montserrat_thin.ttf
+          weight: 100
+        - asset: assets/fonts/montserrat_extralight.ttf
+          weight: 200
+        - asset: assets/fonts/montserrat_light.ttf
+          weight: 300
+        - asset: assets/fonts/montserrat_regular.ttf
+          weight: 400
+        - asset: assets/fonts/montserrat_medium.ttf
+          weight: 500
+        - asset: assets/fonts/montserrat_semibold.ttf
+          weight: 600
+        - asset: assets/fonts/montserrat_bold.ttf
+          weight: 700
+
+flutter_gen:
+  output: lib/ui/gen/
+  line_length: 100
 
 flutter_intl:
   enabled: true
   class_name: GolfLocalizations
   main_locale: en
   arb_dir: assets/l10n
-  output_dir: lib/ui/l10n
+  output_dir: lib/ui/gen
+  output-localization-file: app_localizations.dart

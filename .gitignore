@@ -32,7 +32,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/lib/ui/l10n/
+/lib/ui/gen/
 *.g.dart
 *.gr.dart
 *.config.dart

@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:golf_live_scoring/core/common/initializable.dart';
-import 'package:golf_live_scoring/core/data/auth_status.dart';
-import 'package:golf_live_scoring/core/data/exceptions/sign_in_exception.dart';
+import 'package:golf_live_scoring/core/exceptions/sign_in_exception.dart';
 import 'package:golf_live_scoring/core/services/auth/google_sign_in_resolver.dart';
+import 'package:golf_live_scoring/core/services/initializable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -10,34 +9,39 @@ import 'package:rxdart/rxdart.dart';
 class AuthService with Initializable {
   AuthService(this._googleSignInResolver);
 
-  final GoogleSignInResolver _googleSignInResolver;
+  late final auth = FirebaseAuth.instance;
+  late final GoogleSignInResolver _googleSignInResolver;
 
-  late final BehaviorSubject<AuthStatus> _signedInStatusSubject;
+  late final _authProgressSubject = BehaviorSubject<bool>();
+  late final _userSubject = BehaviorSubject<User?>();
 
-  Stream<AuthStatus> get signedInStatusStream => _signedInStatusSubject.stream;
+  Stream<bool> get authProgressStream => _authProgressSubject.stream;
+
+  Stream<User?> get userStream => _userSubject.stream;
 
   Future<void> init() async {
     if (initialized) return;
 
     _googleSignInResolver.init();
 
-    _signedInStatusSubject = BehaviorSubject<AuthStatus>.seeded(
-        FirebaseAuth.instance.currentUser != null ? AuthStatus.signed : AuthStatus.unsigned);
-    FirebaseAuth.instance.authStateChanges().listen((User? user) => _updateSignInStatus(user));
+    _authProgressSubject.add(false);
+    _userSubject.add(auth.currentUser);
+
+    auth.authStateChanges().listen((User? user) => _updateUser(user));
 
     initialized = true;
   }
 
   bool isSignedIn() {
-    return _signedInStatusSubject.value == AuthStatus.signed;
+    return _userSubject.value != null;
   }
 
-  bool isEmailVerified() {
-    return _signedInStatusSubject.value == AuthStatus.signed;
+  User? getUser() {
+    return _userSubject.value;
   }
 
-  void _updateSignInStatus(User? user) {
-    _signedInStatusSubject.add(user != null ? AuthStatus.signed : AuthStatus.unsigned);
+  void _updateUser(User? user) {
+    _userSubject.add(user);
   }
 
   Future<void> signUpWithEmail(String email, String password) {
@@ -71,13 +75,14 @@ class AuthService with Initializable {
   }
 
   Future<void> _makeAuthAction(Future<void> Function() action) async {
-    if (_signedInStatusSubject.value == AuthStatus.inProgress) throw SignInInProgressException();
+    if (_authProgressSubject.value) throw SignInInProgressException();
 
-    _signedInStatusSubject.add(AuthStatus.inProgress);
+    _authProgressSubject.add(true);
     try {
       await action.call();
     } finally {
-      _updateSignInStatus(FirebaseAuth.instance.currentUser);
+      _updateUser(FirebaseAuth.instance.currentUser);
+      _authProgressSubject.add(false);
     }
   }
 }

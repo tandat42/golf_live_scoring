@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:golf_live_scoring/core/di.dart';
-import 'package:golf_live_scoring/ui/l10n/l10n.dart';
+import 'package:golf_live_scoring/ui/common/golf_theme.dart';
+import 'package:golf_live_scoring/ui/gen/l10n.dart';
 import 'package:golf_live_scoring/ui/navigation/golf_router.dart';
 
 class GolfApp extends StatefulWidget {
@@ -23,10 +24,7 @@ class _GolfAppState extends State<GolfApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: GolfLocalizations.delegate.supportedLocales,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: false,
-      ),
+      theme: GolfTheme.defaultTheme,
       routerConfig: getIt.get<GolfRouter>().config(),
     );
   }
