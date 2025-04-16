@@ -29,14 +29,17 @@ class _SplashScreenState extends State<SplashScreen> with ExceptionDisplayer {
   }
 
   @override
+  void dispose() {
+    _cubit.close();
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(
-          Assets.images.logo,
-          width: 157,
-          height: 81,
-        ),
+        child: SvgPicture.asset(Assets.images.logo, width: 170, height: 22, fit: BoxFit.contain),
       ),
     );
   }

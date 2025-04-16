@@ -31,7 +31,7 @@ class GolfDropdownField<V> extends StatelessWidget {
           bloc: cubit,
           builder: (context, state) {
             final border = OutlineInputBorder(
-              borderSide: BorderSide(color: colors.line, width: 1),
+              borderSide: BorderSide(color: colors.line),
               borderRadius: BorderRadius.circular(12),
             );
 
@@ -61,7 +61,7 @@ class GolfDropdownField<V> extends StatelessWidget {
                 ),
               ),
               items: state.values
-                  ?.map(
+                  .map(
                     (v) => DropdownMenuItem(
                       value: v,
                       child: Text(valueToString.call(v) ?? '', style: textStyles.input),

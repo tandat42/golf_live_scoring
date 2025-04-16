@@ -3,6 +3,7 @@
   "commonAppTitle": "Golf Own Tour",
   "commonTermsOfService": "Terms of Service",
   "commonPrivacyPolicy": "Privacy Policy",
+  "commonDateLongFormat": "d MMMM yyyy",
   "@_COUNTRIES": {},
   "countryAe": "Арaбские Эмирaты",
   "countryBy": "Беларусь",
@@ -29,5 +30,70 @@
   "signUpCompleteButton": "COMPLETE PROFILE",
   "signUpHaveAccount": "I already have an account",
   "@_MAIN": {},
-  "mainTitle": "Main Screen"
+  "mainTournaments": "Tournaments",
+  "mainTournamentCalendar": "Tournament calendar",
+  "@_VIEWER_TOURNAMENTS": {},
+  "viewerTournamentsTeams": "Teams",
+  "viewerTournamentsDraw": "Draw",
+  "viewerTournamentsScores": "Scores",
+  "viewerTournamentsAutorefresh": "Autorefresh",
+  "viewerTournamentsTitleRound": "ROUND {round}",
+  "@viewerTournamentsTitleRound": {
+    "placeholders": {
+      "round": {
+        "type": "int"
+      }
+    }
+  },
+  "viewerTournamentsTitleHoles": "{holesCount} HOLES",
+  "@viewerTournamentsTitleHoles": {
+    "placeholders": {
+      "holesCount": {
+        "type": "int"
+      }
+    }
+  },
+  "viewerTournamentsSelectRound": "Select round:",
+  "viewerTournamentsEagle": "Eagle",
+  "viewerTournamentsBirdie": "Birdie",
+  "viewerTournamentsPar": "Par",
+  "viewerTournamentsErgebnis": "Ergebnis",
+  "viewerTournamentsBrutto": "Brutto",
+  "viewerTournamentsNetto": "Netto",
+  "viewerTournamentsBogey": "Bogey",
+  "viewerTournamentsDoubleBogey": "Double Bogey",
+  "viewerTournamentsTablePos": "Pos",
+  "viewerTournamentsTableName": "Name",
+  "viewerTournamentsTableHcp": "HCP",
+  "viewerTournamentsTableHcpValue": "HCP {hcp}",
+  "@viewerTournamentsTableHcpValue": {
+    "placeholders": {
+      "hcp": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerTournamentsTableRound": "R{round}",
+  "@viewerTournamentsTableRound": {
+    "placeholders": {
+      "round": {
+        "type": "int"
+      }
+    }
+  },
+  "viewerTournamentsTableTotal": "Total",
+  "viewerTournamentsTableHoles": "Hole(s)",
+  "viewerTournamentsTablePoints": "{points} points",
+  "@viewerTournamentsTablePoints": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      }
+    }
+  },
+  "viewerTournamentsTableTeamCountry": "Team / Country",
+  "viewerTournamentsTablePlayedHoles": "Played Holes",
+  "viewerTournamentsTableLoch": "Loch",
+  "viewerTournamentsTableIn": "In",
+  "viewerTournamentsTableOut": "Out"
 }

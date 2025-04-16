@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "golf-live-scoring-559c4",
+    "test": "golf-live-scoring-559c4"
+  },
+  "targets": {},
+  "etags": {}
+}

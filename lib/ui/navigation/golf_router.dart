@@ -6,6 +6,8 @@ import 'package:golf_live_scoring/ui/screens/main/main_screen.dart';
 import 'package:golf_live_scoring/ui/screens/sign_in/sign_in_screen.dart';
 import 'package:golf_live_scoring/ui/screens/sign_up/sign_up_screen.dart';
 import 'package:golf_live_scoring/ui/screens/splash/splash_screen.dart';
+import 'package:golf_live_scoring/ui/screens/viewer_tournament/viewer_tournament_screen.dart';
+import 'package:golf_live_scoring/ui/screens/viewer_tournaments_calendar/viewer_tournaments_calendar_screen.dart';
 import 'package:injectable/injectable.dart';
 
 @AutoRouterConfig()
@@ -23,7 +25,21 @@ class GolfRouter extends RootStackRouter {
         AutoRoute(page: SplashRoute.page, initial: true, path: SplashScreen.path),
         AutoRoute(page: SignInRoute.page, path: SignInScreen.path),
         AutoRoute(page: SignUpRoute.page, path: SignUpScreen.path),
-        AutoRoute(page: MainRoute.page, path: MainScreen.path),
+        AutoRoute(
+          page: MainRoute.page,
+          path: MainScreen.path,
+          children: [
+            RedirectRoute(path: '', redirectTo: ViewerTournamentsScreen.path),
+            AutoRoute(
+              page: ViewerTournamentsRoute.page,
+              path: ViewerTournamentsScreen.path,
+            ),
+            AutoRoute(
+              page: ViewerTournamentsCalendarRoute.page,
+              path: ViewerTournamentsCalendarScreen.path,
+            ),
+          ],
+        ),
       ];
 }
 

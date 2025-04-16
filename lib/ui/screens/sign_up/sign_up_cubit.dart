@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:golf_live_scoring/core/data/club.dart';
 import 'package:golf_live_scoring/core/data/profile.dart';
+import 'package:golf_live_scoring/core/data/setup.dart';
 import 'package:golf_live_scoring/core/exceptions/sign_up_exception.dart';
 import 'package:golf_live_scoring/core/services/auth/auth_service.dart';
 import 'package:golf_live_scoring/core/services/data/data_service.dart';
@@ -37,7 +38,7 @@ class SignUpCubit extends Cubit<SignUpState> with Initializable {
   late final StreamSubscription<bool> _authProgressSubscription;
   late final StreamSubscription<String?> _countryCodeDropdownSubscription;
 
-  List<Club>? _clubs;
+  Setup? _setup;
 
   Future<void> init() async {
     if (initialized) return;
@@ -56,8 +57,8 @@ class SignUpCubit extends Cubit<SignUpState> with Initializable {
 
     while (countryCodeCubit.state.values.isEmpty && !isClosed) {
       try {
-        _clubs = await _dataService.getClubs();
-        final countryCodes = _clubs!.map((c) => c.countryCode ?? '').toSet().toList()
+        _setup = await _dataService.loadSetup();
+        final countryCodes = _setup!.clubs.map((c) => c.countryCode ?? '').toSet().toList()
           ..sort(StringUtils.compare);
         countryCodeCubit.update(null, countryCodes);
         emit(state.copyWith(inProgress: false));
@@ -72,7 +73,7 @@ class SignUpCubit extends Cubit<SignUpState> with Initializable {
 
     _countryCodeDropdownSubscription =
         countryCodeCubit.stream.map((s) => s.value).listen((countryCode) {
-      final filteredClubs = _clubs!.where((c) => c.countryCode == countryCode).toList();
+      final filteredClubs = _setup!.clubs.where((c) => c.countryCode == countryCode).toList();
       clubCubit.update(null, filteredClubs);
     });
     _authProgressSubscription =
@@ -118,12 +119,14 @@ class SignUpCubit extends Cubit<SignUpState> with Initializable {
         Profile(
           lastName: lastNameCubit.text,
           firstName: firstNameCubit.text,
+          image: null,
           countryCode: countryCodeCubit.value,
           clubId: clubCubit.value?.id ?? '',
           phoneNumber: phoneNumberCubit.text,
+          hcp: 0,
         ),
       );
-      //sign in is processed by AppSignInListener
+      //sign in is processed by AppAuthListener
 
       emit(state.copyWith(inProgress: false));
     } on Exception catch (e) {

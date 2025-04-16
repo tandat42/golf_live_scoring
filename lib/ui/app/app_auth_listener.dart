@@ -6,7 +6,6 @@ import 'package:golf_live_scoring/core/services/initializable.dart';
 import 'package:golf_live_scoring/ui/navigation/golf_router.dart';
 import 'package:golf_live_scoring/ui/navigation/golf_router.gr.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rxdart/rxdart.dart';
 
 @singleton
 class AppAuthListener with Initializable {

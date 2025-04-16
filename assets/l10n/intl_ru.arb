@@ -29,5 +29,6 @@
   "signUpCompleteButton": "СОХРАНИТЬ ПРОФИЛЬ",
   "signUpHaveAccount": "У меня уже есть аккаунт",
   "@_MAIN": {},
-  "mainTitle": "Main Screen"
+  "mainTournaments": "Турниры",
+  "mainTournamentCalendar": "Календарь турниров"
 }

@@ -1,1 +1,55 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"golf-live-scoring-559c4","appId":"1:410405925296:android:bf1d14ff19461805bc2675","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"golf-live-scoring-559c4","appId":"1:410405925296:ios:a60cfc1be19bef6bbc2675","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"golf-live-scoring-559c4","appId":"1:410405925296:ios:a60cfc1be19bef6bbc2675","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"golf-live-scoring-559c4","configurations":{"android":"1:410405925296:android:bf1d14ff19461805bc2675","ios":"1:410405925296:ios:a60cfc1be19bef6bbc2675","macos":"1:410405925296:ios:a60cfc1be19bef6bbc2675","web":"1:410405925296:web:e65cb9d98ac75d3bbc2675","windows":"1:410405925296:web:0068038f35c055d8bc2675"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "golf-live-scoring-559c4",
+          "appId": "1:410405925296:android:bf1d14ff19461805bc2675",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "golf-live-scoring-559c4",
+          "appId": "1:410405925296:ios:a60cfc1be19bef6bbc2675",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "golf-live-scoring-559c4",
+          "appId": "1:410405925296:ios:a60cfc1be19bef6bbc2675",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "golf-live-scoring-559c4",
+          "configurations": {
+            "android": "1:410405925296:android:bf1d14ff19461805bc2675",
+            "ios": "1:410405925296:ios:a60cfc1be19bef6bbc2675",
+            "macos": "1:410405925296:ios:a60cfc1be19bef6bbc2675",
+            "web": "1:410405925296:web:e65cb9d98ac75d3bbc2675",
+            "windows": "1:410405925296:web:0068038f35c055d8bc2675"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

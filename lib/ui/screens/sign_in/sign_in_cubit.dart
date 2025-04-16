@@ -72,7 +72,7 @@ class SignInCubit extends Cubit<SignInState> with Initializable {
     try {
       print('SignInCubit._signIn: start');
       await signInAction.call();
-      //sign in is processed by AppSignInListener
+      //sign in is processed by AppAuthListener
 
       print('SignInCubit._signIn: sign in step completed=${_authService.isSignedIn()}');
 
@@ -83,7 +83,8 @@ class SignInCubit extends Cubit<SignInState> with Initializable {
       while (!isClosed) {
         try {
           print('SignInCubit._signIn: getting profile');
-          await _dataService.getProfile();
+          await _dataService.loadSetup();
+          await _dataService.loadProfile();
           print('SignInCubit._signIn: completed');
           return;
         } on Exception catch (e) {

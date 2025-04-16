@@ -38,7 +38,7 @@ class AuthorizationScreenTemplate<C extends Cubit<S>, S extends ProgressState>
         final content = Column(
           children: [
             if (needScroll) const SizedBox(height: 92) else const Spacer(flex: 92),
-            SvgPicture.asset(Assets.images.logo, width: 157, height: 81),
+            SvgPicture.asset(Assets.images.logo, width: 258, height: 32, fit: BoxFit.contain),
             const SizedBox(height: 7.21),
             Container(width: 228, height: 1, color: theme.dividerColor),
             const SizedBox(height: 30.72),

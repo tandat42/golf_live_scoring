@@ -42,7 +42,7 @@ class GolfTextField extends StatelessWidget {
           bloc: cubit,
           builder: (context, state) {
             final border = OutlineInputBorder(
-              borderSide: BorderSide(color: colors.line, width: 1),
+              borderSide: BorderSide(color: colors.line),
               borderRadius: BorderRadius.circular(12),
             );
 

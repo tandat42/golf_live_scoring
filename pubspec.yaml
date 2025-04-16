@@ -9,9 +9,11 @@ environment:
 dependencies:
   auto_route: ^10.0.0
   bloc: ^9.0.0
+  cached_network_image: ^3.4.1
   cloud_firestore: ^5.6.2
+  collection: ^1.19.1
   equatable: ^2.0.7
-  firebase_auth: ^5.4.0
+  firebase_auth: ^5.5.1
   firebase_core: ^3.10.0
   flutter:
     sdk: flutter
@@ -27,7 +29,10 @@ dependencies:
   injectable: ^2.5.0
   intl: ^0.19.0
   json_annotation: ^4.9.0
+  path: ^1.9.1
   rxdart: ^0.28.0
+  uuid: ^4.5.1
+  widgets_easier: ^0.0.10
 
 dev_dependencies:
   auto_route_generator: ^10.0.1
@@ -69,6 +74,10 @@ flutter:
 flutter_gen:
   output: lib/ui/gen/
   line_length: 100
+
+  integrations:
+    image: false
+
 
 flutter_intl:
   enabled: true

@@ -8,6 +8,7 @@ abstract class Club with _$Club {
   const factory Club({
     required String id,
     required String? name,
+    required String? icon,
     required String? countryCode,
   }) = _Club;
 
