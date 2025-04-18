@@ -71,6 +71,7 @@ class AuthService with Initializable {
   Future<void> signOut() {
     return _makeAuthAction(() async {
       await FirebaseAuth.instance.signOut();
+      _userSubject.add(null);
     });
   }
 

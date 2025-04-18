@@ -34,6 +34,7 @@ class AppAuthListener with Initializable {
 
   void _onProfileChange(Profile? newProfile) {
     final prevProfile = _prevProfile;
+    _prevProfile = newProfile;
 
     print('AppAuthListener._onProfileChange: $prevProfile|$newProfile');
 

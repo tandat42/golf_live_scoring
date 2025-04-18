@@ -27,8 +27,15 @@ class SplashCubit extends Cubit<SplashState> {
   final AppAuthListener _appAuthListener;
 
   bool _started = false;
+  bool _completed = false;
 
   Future<void> init() async {
+    if (_completed) {
+      await Future.delayed(const Duration(seconds: 1));
+      _onCompleted();
+      return;
+    }
+
     if (_started) return;
     _started = true;
 
@@ -56,16 +63,22 @@ class SplashCubit extends Cubit<SplashState> {
 
     _appService.readyToWork = true;
 
+    _onCompleted();
+
+    _completed = true;
+  }
+
+  void _onCompleted() {
     if (_authService.isSignedIn()) {
       final profile = _dataService.profile;
-      print('SplashCubit.init: signed in: profile?.isEmpty=${profile?.isEmpty}');
+      print('SplashCubit._onCompleted: signed in: profile?.isEmpty=${profile?.isEmpty}');
       if (profile?.isEmpty ?? true) {
         _router.replaceAll([SignUpRoute()]);
       } else {
         _router.replaceAll([MainRoute()]);
       }
     } else {
-      print('SplashCubit.init: signed out');
+      print('SplashCubit._onCompleted: signed out');
       _router.replace(SignInRoute());
     }
   }

@@ -20,7 +20,7 @@ class DataService with Initializable {
   late final _db = FirebaseFirestore.instance;
 
   late final _setupSubject = BehaviorSubject<Setup>();
-  late final _profileSubject = BehaviorSubject<Profile>();
+  late final _profileSubject = BehaviorSubject<Profile?>();
 
   Stream<Setup> get setupStream => _setupSubject.stream;
 
@@ -49,7 +49,8 @@ class DataService with Initializable {
   }
 
   Future<void> editProfile(Profile profile) async {
-    await _db.collection(_profilesKey).doc(_user!.uid).set(profile.toJson());
+    var user = _user;
+    await _db.collection(_profilesKey).doc(user!.uid).set(profile.toJson());
     _profileSubject.add(profile);
   }
 
@@ -60,6 +61,10 @@ class DataService with Initializable {
     final profile = Profile.fromJson(doc.data() ?? {}).copyWith(id: _user!.uid);
     _profileSubject.add(profile);
     return profile;
+  }
+
+  void reset() {
+    _profileSubject.add(null);
   }
 
   Future<List<Profile>> loadProfiles() async {

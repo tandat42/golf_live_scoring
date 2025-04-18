@@ -45,6 +45,10 @@ class _MainScreenState extends State<MainScreen> {
     //todo
   }
 
+  void _onSignOutTap() {
+    _cubit.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -59,8 +63,10 @@ class _MainScreenState extends State<MainScreen> {
               builder: (context, child) {
                 final tabsRouter = context.tabsRouter;
                 return Scaffold(
-                  body: SizedBox(
-                    width: double.infinity,
+                  body: state.authInProgress
+                      ? Center(child: CircularProgressIndicator())
+                      : SizedBox(
+                          width: double.infinity,
                     height: double.infinity,
                     child: Stack(
                       children: [
@@ -69,7 +75,8 @@ class _MainScreenState extends State<MainScreen> {
                           selectedTabIndex: tabsRouter.activeIndex,
                           onTabTap: (t) => _onTabTap(tabsRouter, t),
                           onSearchTap: _onSearchTap,
-                        ),
+                                onSignOutTap: _onSignOutTap,
+                              ),
                       ],
                     ),
                   ),
@@ -84,6 +91,7 @@ class _MainTopBar extends StatelessWidget {
     required this.selectedTabIndex,
     required this.onTabTap,
     required this.onSearchTap,
+    required this.onSignOutTap,
   });
 
   static const barHeight = 60.0;
@@ -93,6 +101,7 @@ class _MainTopBar extends StatelessWidget {
   final int selectedTabIndex;
   final ValueChanged<int> onTabTap;
   final VoidCallback onSearchTap;
+  final VoidCallback onSignOutTap;
 
   @override
   Widget build(BuildContext context) {
@@ -144,6 +153,16 @@ class _MainTopBar extends StatelessWidget {
                       icon: SvgPicture.asset(Assets.icons.search, width: 20, height: 20),
                       padding: const EdgeInsets.all(10),
                       onPressed: onSearchTap,
+                    ),
+                  ),
+                  const SizedBox(width: 30),
+                  SizedBox(
+                    width: 40,
+                    height: 40,
+                    child: IconButton(
+                      icon: SvgPicture.asset(Assets.icons.logout, width: 23, height: 20),
+                      padding: const EdgeInsets.all(10),
+                      onPressed: onSignOutTap,
                     ),
                   ),
                   const SizedBox(width: 30),

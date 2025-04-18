@@ -8,7 +8,8 @@ abstract class Profile with _$Profile {
   const Profile._();
 
   const factory Profile({
-    @Default('') String id,
+    // ignore: invalid_annotation_target
+    @Default('') @JsonKey(includeToJson: false) String id,
     required String? lastName,
     required String? firstName,
     required String? image,
