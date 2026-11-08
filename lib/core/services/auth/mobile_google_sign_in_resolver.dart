@@ -4,12 +4,17 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class MobileGoogleSignInResolver extends GoogleSignInResolver {
   @override
+  Future<void> init() async {
+    await GoogleSignIn.instance.initialize();
+  }
+
+  @override
   Future<void> signIn() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAccount googleUser = await GoogleSignIn.instance.authenticate();
+    final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+      idToken: googleAuth.idToken,
     );
 
     await FirebaseAuth.instance.signInWithCredential(credential);

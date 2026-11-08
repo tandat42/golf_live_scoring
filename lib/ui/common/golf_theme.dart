@@ -96,7 +96,7 @@ abstract final class GolfTheme {
   }.call();
 }
 
-class ColorsExtension extends ThemeExtension<ColorsExtension> with EquatableMixin {
+class ColorsExtension extends ThemeExtension<ColorsExtension> with Equatable {
   ColorsExtension({
     required this.accent1,
     required this.accent2,
@@ -127,19 +127,19 @@ class ColorsExtension extends ThemeExtension<ColorsExtension> with EquatableMixi
 
   @override
   ColorsExtension copyWith({
-    final Color? accent1,
-    final Color? accent2,
-    final Color? background1,
-    final Color? background2,
-    final Color? background3,
-    final Color? background4,
-    final Color? textPrimary,
-    final Color? textSecondary,
-    final Color? textLabel,
-    final Color? textInverted,
-    final Color? textUnimportant,
-    final Color? textFooter,
-    final Color? line,
+    Color? accent1,
+    Color? accent2,
+    Color? background1,
+    Color? background2,
+    Color? background3,
+    Color? background4,
+    Color? textPrimary,
+    Color? textSecondary,
+    Color? textLabel,
+    Color? textInverted,
+    Color? textUnimportant,
+    Color? textFooter,
+    Color? line,
   }) {
     return ColorsExtension(
       accent1: accent1 ?? this.accent1,
@@ -192,7 +192,7 @@ class ColorsExtension extends ThemeExtension<ColorsExtension> with EquatableMixi
       ];
 }
 
-class TextStylesExtension extends ThemeExtension<TextStylesExtension> with EquatableMixin {
+class TextStylesExtension extends ThemeExtension<TextStylesExtension> with Equatable {
   TextStylesExtension({
     required this.title1,
     required this.title2,
@@ -234,15 +234,15 @@ class TextStylesExtension extends ThemeExtension<TextStylesExtension> with Equat
 
   @override
   TextStylesExtension copyWith({
-    final TextStyle? title1,
-    final TextStyle? title2,
-    final TextStyle? input,
-    final TextStyle? body1,
-    final TextStyle? body2,
-    final TextStyle? label,
-    final TextStyle? floatingLabel,
-    final TextStyle? footer,
-    final TextStyle? buttonDefault,
+    TextStyle? title1,
+    TextStyle? title2,
+    TextStyle? input,
+    TextStyle? body1,
+    TextStyle? body2,
+    TextStyle? label,
+    TextStyle? floatingLabel,
+    TextStyle? footer,
+    TextStyle? buttonDefault,
   }) {
     return TextStylesExtension(
       title1: title1 ?? this.title1,

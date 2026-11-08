@@ -38,7 +38,6 @@ migrate_working_dir/
 *.config.dart
 *.freezed.dart
 
-
 # Symbolication related
 app.*.symbols
 
@@ -49,3 +48,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# FVM Version Cache
+.fvm/

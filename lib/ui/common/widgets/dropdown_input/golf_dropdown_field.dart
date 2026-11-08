@@ -36,6 +36,8 @@ class GolfDropdownField<V> extends StatelessWidget {
             );
 
             return DropdownButtonFormField<V>(
+              initialValue: state.value,
+              isExpanded: true,
               style: textStyles.input,
               decoration: InputDecoration(
                 filled: true,
@@ -51,9 +53,8 @@ class GolfDropdownField<V> extends StatelessWidget {
                 prefixIconConstraints: BoxConstraints.tight(Size(54, double.infinity)),
                 errorText: ExceptionUtils.getText(state.exception),
               ),
-              icon: Container(
-                margin: const EdgeInsetsDirectional.fromSTEB(14, 0, 14, 0),
-                alignment: Alignment.center,
+              icon: Padding(
+                padding: const EdgeInsetsDirectional.symmetric(horizontal: 14),
                 child: SvgPicture.asset(
                     Assets.icons.arrowTriangleDown,
                     width: 16,
@@ -64,7 +65,11 @@ class GolfDropdownField<V> extends StatelessWidget {
                   .map(
                     (v) => DropdownMenuItem(
                       value: v,
-                      child: Text(valueToString.call(v) ?? '', style: textStyles.input),
+                      child: Text(
+                        valueToString.call(v) ?? '',
+                        style: textStyles.input,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   )
                   .toList(),

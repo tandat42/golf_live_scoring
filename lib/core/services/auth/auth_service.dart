@@ -22,7 +22,7 @@ class AuthService with Initializable {
   Future<void> init() async {
     if (initialized) return;
 
-    _googleSignInResolver.init();
+    await _googleSignInResolver.init();
 
     _authProgressSubject.add(false);
     _userSubject.add(auth.currentUser);

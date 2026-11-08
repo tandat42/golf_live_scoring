@@ -14,11 +14,8 @@ import 'package:injectable/injectable.dart';
 
 @Injectable()
 class ViewerTournamentCubit extends Cubit<ViewerTournamentState> {
-  ViewerTournamentCubit(
-    this._router,
-    this._dataService,
-    @factoryParam this.id,
-  ) : super(ViewerTournamentState());
+  ViewerTournamentCubit(this._router, this._dataService, @factoryParam this.id)
+    : super(ViewerTournamentState());
 
   final GolfRouter _router;
   final DataService _dataService;
@@ -38,12 +35,16 @@ class ViewerTournamentCubit extends Cubit<ViewerTournamentState> {
       setup = _dataService.setup;
     }
 
+    if (isClosed) return;
+
     _clubsById = setup.clubs.fold(<String, Club>{}, (r, c) {
       r[c.id] = c;
       return r;
     });
 
-    _subscription = _dataService.listenTournament(id).listen(
+    _subscription = _dataService
+        .listenTournament(id)
+        .listen(
           _onTournamentChange,
           onError: (e) => emit(state.copyWith(exception: e)),
         );
@@ -61,13 +62,16 @@ class ViewerTournamentCubit extends Cubit<ViewerTournamentState> {
       round: tournament.round,
     );
 
-    final clubParticipants = tournament.participants.fold(<String, List<Participant>>{}, (r, p) {
-      final clubId = p.profile.clubId;
-      if (clubId != null) {
-        !r.containsKey(clubId) ? r[clubId] = [p] : r[clubId]!.add(p);
-      }
-      return r;
-    });
+    final clubParticipants = tournament.participants.fold(
+      <String, List<Participant>>{},
+      (r, p) {
+        final clubId = p.profile.clubId;
+        if (clubId != null) {
+          !r.containsKey(clubId) ? r[clubId] = [p] : r[clubId]!.add(p);
+        }
+        return r;
+      },
+    );
     final clubsScores = clubParticipants.keys.map((clubId) {
       final participants = clubParticipants[clubId]!;
       return ClubScoreInfo(
@@ -78,15 +82,15 @@ class ViewerTournamentCubit extends Cubit<ViewerTournamentState> {
         total: participants.totalNetto(),
         roundTotals: List.generate(3, (i) => participants.roundTotal(i)),
       );
-    }).toList()
-      ..sort((s1, s2) => s2.total.compareTo(s1.total));
+    }).toList()..sort((s1, s2) => s2.total.compareTo(s1.total));
 
     final flights = tournament.flights
         .map(
           (f) => FlightInfo(
             flight: f,
-            participants:
-                tournament.participants.where((p) => f.profileIds.contains(p.profile.id)).toList(),
+            participants: tournament.participants
+                .where((p) => f.profileIds.contains(p.profile.id))
+                .toList(),
             clubsById: _clubsById,
           ),
         )

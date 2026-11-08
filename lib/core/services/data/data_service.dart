@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart' hide Field;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:golf_live_scoring/core/data/field.dart';
 import 'package:golf_live_scoring/core/data/profile.dart';

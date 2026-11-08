@@ -115,7 +115,7 @@ class SignUpCubit extends Cubit<SignUpState> with Initializable {
       }
       emit(state.copyWith(signedIn: true));
 
-      _dataService.editProfile(
+      await _dataService.editProfile(
         Profile(
           lastName: lastNameCubit.text,
           firstName: firstNameCubit.text,

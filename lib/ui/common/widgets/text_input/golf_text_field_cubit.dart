@@ -10,6 +10,13 @@ class GolfTextFieldCubit extends Cubit<GolfTextFieldState> {
 
   final controller = TextEditingController();
 
+  @override
+  Future<void> close() {
+    controller.dispose();
+
+    return super.close();
+  }
+
   void setText(String? text) {
     controller.text = text ?? "";
   }
@@ -20,5 +27,3 @@ class GolfTextFieldCubit extends Cubit<GolfTextFieldState> {
 
   String get text => controller.text.trim();
 }
-
-

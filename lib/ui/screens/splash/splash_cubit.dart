@@ -8,7 +8,7 @@ import 'package:golf_live_scoring/ui/navigation/golf_router.gr.dart';
 import 'package:golf_live_scoring/ui/screens/splash/splash_state.dart';
 import 'package:injectable/injectable.dart';
 
-@Singleton()
+@Injectable()
 class SplashCubit extends Cubit<SplashState> {
   SplashCubit(
     this._router,
